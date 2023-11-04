@@ -1,0 +1,33 @@
+<div class="container">
+  <h2> <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"><i class="bi bi-arrow-left-circle"></i></a> <i>
+      Canal #{{canalUsed.id}} </i>| {{canalUsed.name}} </h2>
+  <hr>
+  <ul>
+    <app-message *ngFor="let message of messagesToDisplay" [message]="message"
+      [messageList]="messagesToDisplay"></app-message>
+  </ul>
+
+  <app-addmessage (RefreshEmitter)="refresh()">
+
+  </app-addmessage>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Liste des canaux</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+      <li class="nav-item">
+        <a class="nav-link active">Afficher tout les canaux</a>
+      </li>
+      <div *ngFor="let canal of canals">
+        <li class="nav-item" (click)="changeCanal(canal)">
+          <a class="nav-link " routerLink="">{{ canal.name }}</a>
+        </li>
+      </div>
+    </ul>
+
+  </div>
+</div>

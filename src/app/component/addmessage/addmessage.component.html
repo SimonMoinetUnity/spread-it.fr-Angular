@@ -1,0 +1,10 @@
+<hr>
+<form [formGroup]="form" (submit)="onClick()">
+
+    <div class="input-group mb-3">
+        <input type="text" formControlName="messageContent" required name="messageContent" id="messagecontent"
+            class="form-control" aria-describedby="helpId" placeholder="Ecrire un message"
+            aria-describedby="button-addon2">
+        <button [disabled]="form.invalid" class="btn btn-primary" type="submit" id="button-addon2">Envoyer</button>
+    </div>
+</form>

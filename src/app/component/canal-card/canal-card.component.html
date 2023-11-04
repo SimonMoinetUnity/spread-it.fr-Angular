@@ -1,0 +1,12 @@
+<div class="card border-secondary m-1">
+    <div class="card-header">{{canal.name}}</div>
+    <div class="card-body">
+        <div *ngFor="let message of last3Messages" class="card-text">
+            <div *ngIf="message.date !== undefined">
+                <small>{{message.date | date: 'le dd/MM/yy, à HH:mm'}}</small>
+                <p>{{message.user.nickname}} :<br>
+                    {{message.content}}</p>
+            </div>
+        </div>
+    </div>
+</div>
