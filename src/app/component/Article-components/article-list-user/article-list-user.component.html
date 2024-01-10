@@ -1,0 +1,39 @@
+<section class="py-1">
+  <div class="container">
+    <div class="container-fluid">
+
+      <!-- Affichage des articles -->
+      <div class="row my-5">
+        <ng-container *ngFor="let article of articles">
+          <div class="col-12 col-md-3 my-2 justify-content-between">
+            <app-article-card class="image-item" [article]="article"></app-article-card>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Affichage des articles -->
+      <div *ngIf="this.articles.length == 0" class=" row alert alert-primary col-10 col-sm-6 offset-1 offset-sm-3" role="alert">
+        <h4 class="alert-heading">Vous n'avez pas encore créé d'article !</h4>
+        <hr>
+        <button (click)="createArticle()" class="btn btn-primary text-center">Créer un article</button>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- <section class="py-5 bg-light">
+    <div class="container-fluid">
+      <div class="row my-5">
+        <ng-container *ngFor="let article of articles">
+        <div class="col-12 col-md-3 my-2 justify-content-between" >
+          <app-article-card class="image-item" [article]="article"></app-article-card>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section> -->
+
+  
+
+  

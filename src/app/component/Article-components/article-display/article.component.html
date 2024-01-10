@@ -1,0 +1,121 @@
+<div >
+
+<!-- Article -->
+<div class="section" >
+  <div class="col-12 col-sm-7 mx-auto d-block" style="background-color: #f0ebe4;">
+      <h1 class="card-title text-center p-3">{{article.titre}}</h1>
+      <img [src]="'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/images/' + article.userId + '/' + article.imageName" 
+     class="rounded mx-auto d-block responsive-image" 
+     alt="image"><br>
+      <div class="card-body ">
+        <div class="card-text col-10 mx-auto d-block" [innerHtml]="article.html"></div><br>
+        <!-- <a (click)="Back()" class="btn btn-primary">Retour</a> -->
+      </div>
+  </div>
+</div>
+
+
+<!-- Espace commentaire -->
+<section class="bg-light col-12 col-sm-7 py-1 mx-auto d-block">
+
+
+
+  <!-- Si l'utilisateur n'est pas connecté -->
+  <div  class="d-flex justify-content-center">
+    <div class="content text-center">
+      <div *ngIf="user.id==0" class="alert alert-success" role="alert">
+
+        <h4 *ngIf="user.id==0" class="alert-heading">Connectez vous pour accéder à l'espace commentaire</h4>
+        <button *ngIf="user.id==0" (click)="seConnecter()" class="btn btn-primary mt-3">Se connecter</button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Si l'utilisateur est connecté -->
+  <div class="d-flex justify-content-center " *ngIf="user.id != 0">
+
+    <div class="content text-center pt-2">
+
+      <div class="ratings">
+        <h2 class="product-rating">{{noteMoyenne}}</h2>
+        <div class="ratings">
+          <i *ngFor="let etoile of etoiles" class="fa"
+            [ngClass]="{'fa-star': etoile.remplie, 'fa-star-o': !etoile.remplie, 'rating-color': true}">
+          </i>
+        </div>
+
+        <div class="rating-text">
+          <span>{{nbNotes}} avis</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  
+
+
+  <div class="container pb-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10">
+
+        <!-- Nouveau commentaire -->
+        <div class="card2" *ngIf="!avisDejaDonne() && user.id!=0">
+          <div class="row">
+            <div class="col-4">
+              <ngx-avatars size="70" name={{user.nickname}} class="mt-2"></ngx-avatars>
+            </div>
+
+            <div class="col-12">
+              <div class="comment-box ml-2">
+        
+                <form [formGroup]="form" (submit)="sauvegarder()">
+                  <div class="rating">
+                    <input type="radio" name="rating" (change)="handleCheckboxChange(5)" value="5" id="5">
+                    <label for="5">☆</label>
+                    <input type="radio" name="rating" (change)="handleCheckboxChange(4)" value="4" id="4">
+                    <label for="4">☆</label>
+                    <input type="radio" name="rating" (change)="handleCheckboxChange(3)" value="3" id="3">
+                    <label for="3">☆</label>
+                    <input type="radio" name="rating" (change)="handleCheckboxChange(2)" value="2" id="2">
+                    <label for="2">☆</label>
+                    <input type="radio" name="rating" (change)="handleCheckboxChange(1)" value="1" id="1">
+                    <label for="1">☆</label>
+                  </div>
+        
+                  <!-- <div class="comment-area">
+                    <textarea formControlName="messageContent" class="form-control" placeholder="Commentaire"></textarea>
+                  </div>
+                    <button [disabled]="form.invalid || nombreEtoiles==0" type="submit"
+                      class="btn btn-outline-success"><i class="bi bi-send"></i></button> -->
+
+                      <div class="input-group mb-3">
+                        <input type="text" formControlName="messageContent" required name="messageContent" class="form-control" placeholder="Ecrire un message" >
+                        <button [disabled]="form.invalid || nombreEtoiles==0" class="btn btn-outline-success" type="submit">
+                            <i class="bi bi-send"></i>
+                        </button> 
+                    </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        
+        </div><hr>
+      
+
+        <div class="card text-dark">
+          <div *ngFor="let avis of listeAvis">
+            <app-avis [avis]="avis"></app-avis>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>
+</div>

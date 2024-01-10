@@ -6,39 +6,30 @@ import { User } from '../entity/user';
 })
 export class AuthService {
 
-   user: User | undefined;
+  user: User | undefined;
 
-  // private token = 'MyFakeToken';
+  private isAuthenticated = false;
 
-  // jwt = require('jsonwebtoken');
-  
-  // getToken(): string {
-  //   return this.token;
-  // }
+  token = 'Fake Token'
 
-  // setUser(user: User)  {
-  //   this.user = user;
-  // }
+  getToken(): String {
+    return this.token;
+  }
 
-    getUser(): User | undefined {
-     return this.user;
-    }
+  getUser(): User | undefined {
+    return this.user;
+  }
 
-    
- 
-   private isAuthenticated = false;
-   
-   logout() {
-     this.isAuthenticated = false;
-   }
- 
-   login() {
-     this.isAuthenticated = true;
-   }
- 
-   isLoggedIn() {
-     return this.isAuthenticated;
-   }
+  logout() {
+    this.isAuthenticated = false;
+  }
 
-  
+  login() {
+    this.isAuthenticated = true;
+  }
+
+  isLoggedIn() {
+    return this.isAuthenticated;
+  }
+
 }

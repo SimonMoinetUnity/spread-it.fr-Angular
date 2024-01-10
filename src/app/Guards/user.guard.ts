@@ -3,6 +3,7 @@ import { User } from '../entity/user';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { UserService } from '../service/user.service';
+import { Role } from '../Interface/Role';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class UserGuard implements CanActivate {
   
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
       const role = this.auth.getRole();
-      if (role && role=='USER') {
+      if (role==Role.USER) {
         return true;
       } else {
         this.router.navigateByUrl('/login');

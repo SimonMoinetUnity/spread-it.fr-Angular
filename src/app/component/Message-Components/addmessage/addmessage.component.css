@@ -1,0 +1,10 @@
+.reply-send {
+    padding: 5px !important;
+  }
+  
+  .reply-send i {
+    text-align: center;
+    padding: 5px !important;
+    color: #93918f;
+    cursor: pointer;
+  }

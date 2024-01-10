@@ -1,12 +1,16 @@
+import { Role } from "../Interface/Role";
+import { Canal } from "./canal";
+
 export class User {
     constructor(
-        public role: string,
+        public role: Role,
         public id: number,
-        public name: string,
         public nickname: string,
         public email: string,
         public password: string,
-        public isLogged: boolean
+        public isLogged: boolean,
+        public canals: Canal[],
+        public nbArticles: number
     ) {
     }
 

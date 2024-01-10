@@ -1,5 +1,6 @@
 export class Message {
-    constructor(public id: number,
+    constructor(
+        public id: number,
         public user: {
             id: number,
             name: string,
@@ -10,7 +11,6 @@ export class Message {
         public canal: { id: number, name: string },
         public content: string,
         public date: Date) {
-
     }
 
 }

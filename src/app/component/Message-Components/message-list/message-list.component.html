@@ -1,0 +1,131 @@
+<section class="py-3 px-3 mt-0 mb-0" style="background-color: #dfdfdc;">
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Gauche : Liste des conversations -->
+      <div class="col {{etatGauche()}} d-sm-block col-sm-3 py-4 " style="background-color:#ffffff">
+        <div class="{{container()}}">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-success " routerLink="" (click)="createCanal()">Nouveau canal</a>
+            </li>
+            <hr>
+            <div *ngFor="let canal of canals">
+              <li class="nav-item"  >
+                <a class="nav-link " routerLink="/canal" (click)="changeCanal(canal)">{{ canal.name }}</a>
+              </li>
+              <hr>
+            </div>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Droite : discussion ouverte -->
+      <div class="col {{etatDroite()}} d-sm-block" style="background-color:#f0f2f5">
+
+        <div class="row nav nav-pills ">
+
+          <a class="nav-link d-sm-none" (click)="displayConsersations()"><i class="bi bi-arrow-left"></i></a>
+
+          <h4 class="col mt-2">{{canalUsed.name}}</h4>
+
+          <!-- Dropdown -->
+          <div class=" mt-2 nav-item dropdown col d-flex justify-content-end">
+
+            <a class="nav-link pills" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></a>
+
+            <div class="dropdown-menu">
+              <a (click)="displayMembers()" class="dropdown-item" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar2">Membres</a>
+              <a *ngIf="isAdmin()" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                type="button">Supprimer le canal</a>
+              <a *ngIf="isAdmin()" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+                type="button">Ajouter des membres</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Conversation -->
+        <div class="row">
+          <div class="container  crollbar scrollbar-black  square thin  blockDiscussion"
+            style="background-color:#f0ebe4">
+            <app-message *ngFor="let message of messagesToDisplay" [message]="message"
+              [messageList]="messagesToDisplay"></app-message>
+          </div>
+        </div>
+        <!-- Nouveau message -->
+        <app-addmessage (RefreshEmitter)="refresh()"></app-addmessage>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- </section> -->
+
+<!-- Affiche les membres -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbarLabel">
+  <div class="offcanvas-header">
+  </div>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Membres</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div><hr>
+  <div class="offcanvas-body">
+  <ul class="list-group">
+    <li *ngFor="let user of userList" class="list-group-item">{{user.nickname}}</li>
+  </ul>
+
+  </div>
+</div>
+
+<!-- Modal de suppression -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer le canal</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Voulez-vous vraiment supprimer ce canal ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+        <button type="button" class="btn btn-danger" (click)="deleteCanal()">Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal d'ajout de membres -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nouveaux membre</h1>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <input type="text" placeholder="Ajouter des membres" id="canalMembres" name="canalMembres" formControlName="canalMembres" class="form-control"/>
+            <!-- <div class="text-center pt-1 mb-5 pb-1">
+            </div> -->
+        </form>
+        <div *ngIf="membreDejaExistant===true" class="modal-body">
+          Impossible d'ajouter un utilisateur déjà présent dans la liste.
+        </div>
+        <div *ngIf="utilisateurIntrouvable===true" class="modal-body">
+          L'utilisateur avec le nom '{{userNickname}}' n'a pas été trouvé.
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="changeModal1()" (click)="changeModal2()">Retour</button>
+        <button type="button" [disabled]="form.invalid || membreDejaExistant===true" class="btn btn-outline-success" (click)="submitNewMembers()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<section class="py-5">
+  <div class="container" >
+    <div >
+      <angular-editor class="custom-toolbar"[(ngModel)]="htmlContent" [config]="config"></angular-editor>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <form class="row" (submit)="sauvegarder()">
+
+      <div class="col-12 my-2">
+        <h4>Titre</h4>
+        <input name="titre" type="text" class="form-control" id="titre" [(ngModel)]="article.titre">
+      </div>
+
+      <!-- <div class="col-2 my-2">
+        
+        <div>
+          <input type="file" (change)="maMethode($event)" class="form-control-file " id="vignette" style="display: none;">
+        </div>
+      </div> -->
+
+      <div class="mb-3">
+        <h4>Vignette</h4>
+        <input class="form-control" type="file" id="formFile" accept="image/*" (change)="upload($event)">
+      </div>
+
+      <!-- <input type="file" accept="image/*" (change)="upload($event)"> -->
+
+      <div class="col-12 my-2">
+        <button type="submit"  class="btn btn-outline-success w-100">Sauvegarder</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+

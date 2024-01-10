@@ -1,0 +1,14 @@
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 100% de la hauteur de la fenêtre visible */
+    margin: 0;
+  }
+  
+  router-outlet {
+    flex: 1; /* Permet au contenu dynamique de prendre toute la hauteur disponible */
+  }
+  
+  app-footer {
+    margin-top: auto; /* Place le footer en bas de la page */
+  }

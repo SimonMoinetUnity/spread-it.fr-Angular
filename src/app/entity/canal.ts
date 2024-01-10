@@ -1,11 +1,11 @@
+import { User } from "./user";
+
 export class Canal{
-    id: number;
-    name: string;
-    /////
-    constructor(id: number, name : string){
-        this.id=id;
-        this.name = name;
+    constructor(
+        public id: number,
+        public name: string,
+        public users: User[],
+        public adminId: number
+    ) {
     }
-
-
 }

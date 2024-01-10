@@ -1,0 +1,37 @@
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');  
+    .height-100{
+        height:100vh;
+    }
+    
+
+    
+    .ratings{
+        margin-right:10px;
+    }
+    
+    .ratings i{
+        
+        color:#cecece;
+        font-size:32px;
+    }
+    
+    .rating-color{
+        color:#fbc634 !important;
+    }
+    
+    .review-count{
+        font-weight:400;
+        margin-bottom:2px;
+        font-size:24px !important;
+    }
+    
+    .small-ratings i{
+      color:#cecece;   
+    }
+    
+    .review-stat{
+        font-weight:300;
+        font-size:18px;
+        margin-bottom:2px;
+    }

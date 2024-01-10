@@ -4,41 +4,47 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import * as fr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CanalListComponent } from './component/canal-list/canal-list.component';
-import { UserListComponent } from './component/user-list/user-list.component';
-import { MessageListComponent } from './component/message-list/message-list.component';
-import { AdduserComponent } from './component/adduser/adduser.component';
-import { EdituserComponent } from './component/edituser/edituser.component';
-import { EditcanalComponent } from './component/editcanal/editcanal.component';
-import { AddcanalComponent } from './component/addcanal/addcanal.component';
-import { HomeComponent } from './component/home/home.component';
-import { HeaderComponent } from './component/header/header.component';
-import { FooterComponent } from './component/footer/footer.component';
-import { AddmessageComponent } from './component/addmessage/addmessage.component';
+import { UserListComponent } from './component/User-Components/user-list/user-list.component';
+import { MessageListComponent } from './component/Message-Components/message-list/message-list.component';
+import { AdduserComponent } from './component/User-Components/adduser/adduser.component';
+import { EdituserComponent } from './component/User-Components/edituser/edituser.component';
+import { AddcanalComponent } from './component/Canal-components/addcanal/addcanal.component';
+import { HomeComponent } from './component/Structure-components/home/home.component';
+import { HeaderComponent } from './component/Structure-components/header/header.component';
+import { FooterComponent } from './component/Structure-components/footer/footer.component';
+import { AddmessageComponent } from './component/Message-Components/addmessage/addmessage.component';
 
-import { MessageComponent } from './component/message/message.component';
-import { CanalComponent } from './component/canal/canal.component';
+import { MessageComponent } from './component/Message-Components/message/message.component';
+import { CanalComponent } from './component/Canal-components/canal/canal.component';
 
-import { LoginComponent } from './component/login/login.component';
-import { CanalCardComponent } from './component/canal-card/canal-card.component';
+import { LoginComponent } from './component/User-Components/login/login.component';
+import { CanalCardComponent } from './component/Canal-components/canal-card/canal-card.component';
 import { httpInterceptorProviders } from './Interceptor';
-import { AuthInterceptor } from './Interceptor/auth.interceptor';
+import { TokenInterceptorProvider } from './Interceptor/token.interceptor';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { TextEditorComponent } from './component/text-editor/text-editor.component';
+import { TextEditorComponent } from './component/Article-components/article-editor/text-editor.component';
+import { ArticleComponent } from './component/Article-components/article-display/article.component';
+import { ArticleListUserComponent } from './component/Article-components/article-list-user/article-list-user.component';
+import { ArticleCardComponent } from './component/Article-components/article-card/article-card.component';
+import { AccueilComponent } from './component/Structure-components/accueil/accueil.component';
+import { ContactComponent } from './component/Structure-components/contact/contact.component';
+import { AvatarModule } from 'ngx-avatars';
+import { AvisComponent } from './component/Avis-components/avis/avis.component';
+import { LoginResetComponent } from './component/User-Components/login-Reset/login-reset.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CanalListComponent,
     UserListComponent,
     MessageListComponent,
     AdduserComponent,
     EdituserComponent,
-    EditcanalComponent,
     AddcanalComponent,
     HomeComponent,
     HeaderComponent,
@@ -49,8 +55,14 @@ import { TextEditorComponent } from './component/text-editor/text-editor.compone
     CanalComponent,
     LoginComponent,
     CanalCardComponent,
-    TextEditorComponent
-
+    TextEditorComponent,
+    ArticleComponent,
+    ArticleListUserComponent,
+    ArticleCardComponent,
+    AccueilComponent,
+    ContactComponent,
+    AvisComponent,
+    LoginResetComponent
   ],
   imports: [
     BrowserModule,
@@ -59,17 +71,19 @@ import { TextEditorComponent } from './component/text-editor/text-editor.compone
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularEditorModule
+    AngularEditorModule,
+    AvatarModule
+
   ],
   providers: [
-  //   { provide: LOCALE_ID, useValue: 'fr-FR' },
-  //   httpInterceptorProviders
-  // {
-  //   provide: HTTP_INTERCEPTORS,
-  //   useClass: AuthInterceptor,
-  //   multi: true,
-  //   }
+     { provide: LOCALE_ID, useValue: 'fr-FR' },
+     TokenInterceptorProvider
   ],
+  
   bootstrap: [HomeComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    registerLocaleData(fr.default);
+  }
+ }

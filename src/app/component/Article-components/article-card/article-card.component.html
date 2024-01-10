@@ -1,0 +1,25 @@
+<!-- <section >
+    <div class="container " > -->
+    <div type="button " (click)="lireArticle()">
+        <div class="card col-12" >
+            <img [src]="'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/images/' + article.userId + '/' + article.imageName" class="card-img-top" alt="image" style="height: 13rem;">
+            <!-- <img [src]="'https://spread-it.fr/images/' + article.userId + '/' + article.imageName" class="card-img-top" alt="image" style="height: 13rem;"> -->
+            <div class="card-body">
+                <h5 class="card-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">{{article.titre}}</h5>
+                <p class="card-title">{{user.nickname}}</p>
+                <p *ngIf="article.date" class="card-title">Publié {{article.date | date : 'le dd/MM/yy'}}</p>
+                <div class="small-ratings">{{article.noteMoy}}
+                    <i *ngFor="let etoile of etoiles" class="fa" [ngClass]="{'fa-star': etoile.remplie, 'fa-star-o': !etoile.remplie, 'rating-color': true}"></i>
+                    ({{article.nbAvis}} avis)
+                </div>
+                <a *ngIf=" isUrlMatching()" (click)="modifierArticle()" class="btn btn-success my-2 mx-1">Modifier</a>
+                <a *ngIf=" isUrlMatching()" (click)="supprimerArticle()" class="btn btn-danger ">Supprimer</a>
+                <div class="my-1" *ngIf="isUrlMatching()">
+                    <label>Publique</label>
+                    <input (click)="publierArticle()" class="form-check-input mx-1 " type="checkbox" [checked]="article.published === 1">
+                  </div>
+            </div>
+        </div>
+    </div>
+<!-- </div>
+</section> -->

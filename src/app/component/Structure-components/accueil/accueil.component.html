@@ -1,0 +1,73 @@
+<section class="py-1">
+    <div class="container">
+       
+        <!-- Dropdown -->
+        <div class="container-fluid">
+            <div class=" mt-5 mx-2 my-2">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Trier par
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" (click)="plusRecents()" href="#">Plus récents</a></li>
+                      <li><a class="dropdown-item" (click)="meilleursNotes()" href="#">Meilleures notes</a></li>
+                      <li><a class="dropdown-item" (click)="plusDeNotes()" href="#">Plus d'avis</a></li>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+
+        <!-- Affichage des articles -->
+        <div class="container-fluid">
+            <div class="row my-5">
+                <ng-container *ngFor="let article of articles">
+                    <div class="col-12 col-md-3 my-2 justify-content-between" *ngIf="article.published !== 0">
+                        <app-article-card class="image-item" [article]="article"></app-article-card>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-0 text-center">Me contacter</h2>
+
+        <div class="row gy-4 mt-4">
+    
+            <div class="col-12 offset-md-2 col-md-8">
+
+                <!-- Formulaire -->
+                <form class="row" [formGroup]="form" (ngSubmit)="submitForm()">
+                    <div class="col-6 my-2">
+                        <label for="prenom" class="form-label">Prénom</label>
+                        <input name="prenom" type="text" class="form-control" id="prenom" formControlName="prenom">
+                    </div>
+                    <div class="col-6 my-2">
+                        <label for="nom" class="form-label">Nom</label>
+                        <input name="name" type="text" class="form-control" id="name" formControlName="nom">
+                    </div>
+                    <div class="col-12 my-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control" id="email" formControlName="email">
+                    </div>
+                    <div class="col-12 my-2">
+                        <label for="message" class="form-label" >Message</label>
+                        <textarea name="message" class="form-control" id="message" rows="3" formControlName="message"></textarea>
+                    </div>
+                    <div class="col-12 my-2">
+                        <button [disabled]="form.invalid" type="submit" class="btn btn-outline-success w-100">Envoyer</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+

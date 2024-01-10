@@ -1,0 +1,40 @@
+<div class="my-3 d-flex justify-content-around align-items-center" *ngIf="isSameDate() === false">
+    <h5>{{this.message.date | date: 'dd/MM/yy'}}</h5>
+</div>
+
+<div class="container">
+<div class="row my-2">
+<div *ngIf="this.us.userlogged" [ngSwitch]="this.us.userlogged.nickname == this.message.user.nickname">
+    
+    <!-- Message de l'utilisateur -->
+    <div *ngSwitchCase="true">
+        <div class="d-flex justify-content-end">
+        <div class="list-group d-inline-flex ms-4">
+            <div class="list-group-item list-group-item-action flex-column align-items-start" style="background-color:#4bff5458 ; border-color: transparent;" >
+                <div class="flex-shrink-1 rounded">
+                    <!-- <div class="font-weight-bold mb-1">{{this.message.user.nickname}}</div> -->
+                    {{ this.message.content}}
+                    <p style="font-size: 0.7em;" class="message-time">{{this.message.date | date: 'HH:mm'}}</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Message des autres utilisateurs -->
+    <div *ngSwitchCase="false">
+        <div class="d-flex">
+        <div class="list-group d-inline-flex me-4">
+            <div class="list-group-item list-group-item-action flex-column align-items-start " style="border-color: transparent;">
+                <div class="flex-shrink-1 rounded">
+                    <div class="font-weight-bold mb-1">{{this.message.user.nickname}}</div>
+                    {{ this.message.content}}
+                    <p style="font-size: 0.7em;" class="message-time">{{this.message.date | date: 'HH:mm'}}</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+</div>

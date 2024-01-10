@@ -1,0 +1,48 @@
+
+/* @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'); */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+body{
+    background-color:#eef3f4;    
+    }
+    
+    .height-100{
+        height:100vh;
+    }
+    
+    .card{
+        width:380px;
+        border:none;
+        height:280px;
+    }
+    
+    .ratings{
+        margin-right:10px;
+    }
+    
+    .ratings i{
+        
+        color:#cecece;
+        font-size:32px;
+    }
+    
+    .rating-color{
+        color:#fbc634 !important;
+    }
+    
+    .review-count{
+        font-weight:400;
+        margin-bottom:2px;
+        font-size:24px !important;
+    }
+    
+    .small-ratings i{
+      color:#cecece;   
+    }
+    
+    .review-stat{
+        font-weight:300;
+        font-size:18px;
+        margin-bottom:2px;
+    }

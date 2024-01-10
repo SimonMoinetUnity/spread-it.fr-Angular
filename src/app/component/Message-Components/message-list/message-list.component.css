@@ -1,0 +1,84 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+  
+  .container {
+    height: 59vh; /* La moitié de la hauteur de la fenêtre */
+    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+  }
+
+  .container1 {
+    height: 73vh; /* La moitié de la hauteur de la fenêtre */
+    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+  }
+
+
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .scrollbar-black::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.scrollbar-black::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.scrollbar-black::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #80808070;
+}
+
+.scrollbar-black {
+  scrollbar-color: #ababab2a #F5F5F5;
+}
+
+/* .blockGlobal {
+  /* margin-top: 20px; 
+  margin-right: 1em;
+  /* margin-bottom: 20px; 
+  margin-left: 1em;
+} */
+
+.blockDiscussion {
+  margin-top: 10px;
+  /* margin-right: 60px; */
+  margin-bottom: 20px;
+  /* margin-left: 60px; */
+}
+
+.nvMessage {
+  margin-top: auto; /* Place le footer en bas de la page */
+}
+
+.bordered-black::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  border: 1px solid #000;
+}
+
+.bordered-black::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: none;
+}
+
+.square::-webkit-scrollbar-track {
+  border-radius: 0 !important;
+}
+
+.square::-webkit-scrollbar-thumb {
+  border-radius: 0 !important;
+}
+
+.thin::-webkit-scrollbar {
+  width: 6px;
+}
+  
