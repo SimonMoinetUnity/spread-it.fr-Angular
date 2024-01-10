@@ -7,7 +7,7 @@ import { Canal } from '../entity/canal';
   providedIn: 'root'
 })
 export class CanalService {
-  private url = 'https://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/canals';
+  private url = 'https://localhost:8080/canals';
   canalUsed!: Canal;
 
   constructor(private http: HttpClient) {

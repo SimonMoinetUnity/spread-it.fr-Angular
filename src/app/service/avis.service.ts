@@ -10,7 +10,7 @@ import { Avis } from '../entity/Avis';
 })
 export class AvisService {
   
-  private url = 'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/avis';
+  private url = 'http://localhost:8080/avis';
   avis!: Avis;
 
   constructor(private http: HttpClient) {}

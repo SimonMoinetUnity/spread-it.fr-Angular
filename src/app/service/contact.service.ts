@@ -19,14 +19,14 @@ export class ContactService {
       message: message,
     };
     
-    return this.http.post('https://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/contact/submit', body);  
+    return this.http.post('https://localhost:8080/contact/submit', body);  
   }
 
   sendEmail(email: string): Observable<IToken> {
     const body = {
       email: email
     };
-    return this.http.post<IToken>('https://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/contact/email', body).pipe(
+    return this.http.post<IToken>('https://localhost:8080/contact/email', body).pipe(
       tap((iToken: IToken) => {localStorage.setItem('UserId', (iToken.user.id).toString()); })
     );
   }

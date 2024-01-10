@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MessageService {
 
-  private url = 'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/messages';
+  private url = 'http://localhost:8080/messages';
 
 
   constructor(private route: ActivatedRoute,private http: HttpClient, private us: UserService, private cs: CanalService, private authService: AuthService) { 

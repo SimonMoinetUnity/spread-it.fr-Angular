@@ -9,7 +9,7 @@ import { Article } from '../entity/Article';
 })
 export class ArticleService {
   
-  private url = 'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/articles';
+  private url = 'http://localhost:8080/articles';
   // private url = 'https://spread-it.fr/articles';
   article!: Article;
   selectedImage: string = '';
@@ -63,7 +63,7 @@ export class ArticleService {
   //   const formData: FormData = new FormData();
   //   formData.append('fileKey', fileToUpload, fileToUpload.name);
   //   console.log("FormData : " + formData)
-  //   return this.http.post("http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/images", formData)
+  //   return this.http.post("http://localhost:8080/images", formData)
   // }
 
   uploadImage(file: File, userId: number) :  Observable<File> {
@@ -71,7 +71,7 @@ export class ArticleService {
   const formData = new FormData();
   formData.append('file', file);
   formData.append('userId', userId.toString());
-    return this.http.post<File>('http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/images', formData)
+    return this.http.post<File>('http://localhost:8080/images', formData)
     // return this.http.post<File>('https://spread-it.fr/images', formData);
 
   }

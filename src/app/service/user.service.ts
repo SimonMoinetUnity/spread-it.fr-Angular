@@ -11,8 +11,8 @@ import { Role } from '../Interface/Role';
 })
 export class UserService {
 
-  private url = 'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/users';
-  private urlAuth = 'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/auth';
+  private url = 'http://localhost:8080/users';
+  private urlAuth = 'http://localhost:8080/auth';
   
   userlogged!:  User | undefined;
 

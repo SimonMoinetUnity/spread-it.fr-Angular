@@ -151,7 +151,7 @@ export class TextEditorComponent implements OnInit {
       if (this.selectedImage) {
         this.article.imageName = this.selectedImage.name;
       }
-      this.sourceImage = 'http://ec2-13-39-38-122.eu-west-3.compute.amazonaws.com:8080/images/'+ this.article.imageName;
+      this.sourceImage = 'http://localhost:8080/images/'+ this.article.imageName;
       // this.sourceImage = 'https://spread-it.fr/images/'+ this.article.imageName;
     });
 
