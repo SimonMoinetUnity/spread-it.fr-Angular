@@ -30,7 +30,6 @@ export class UserService {
     }
   } 
 
-
   //Requêtes à l'API (SpringBoot)
 
   createUser(nickname: string, email: string, password: string){
